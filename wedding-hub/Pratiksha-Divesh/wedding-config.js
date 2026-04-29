@@ -180,7 +180,7 @@ const WEDDING_CONFIG = {
     {
       title: "Where it began",
       text:  "What started as a gentle conversation turned into an effortless companionship. Pratiksha and Divesh found in each other a calm strength, a shared laughter, and a promise to grow together.",
-      img:   "./assets/pre-wedding/pre11.JPG",
+      img:   "./assets/pre-wedding/pre12.jpeg",
       alt:   "Couple enjoying sunset",
     },
     {
@@ -200,11 +200,11 @@ const WEDDING_CONFIG = {
   /* ── HERO SLIDES ──────────────────────────────────── */
   heroSlides: [
     {
-      src: "./assets/pre-wedding/pre10.JPG",
+      src: "./assets/pre-wedding/pre8.jpeg",
       alt: "Romantic couple silhouette",
     },
     {
-      src: "./assets/pre-wedding/pre14.JPG",
+      src: "./assets/pre-wedding/pre16.jpeg",
       alt: "Wedding couple portrait",
     },
     {
