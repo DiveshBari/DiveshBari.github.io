@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Divesh Bari // Software Engineer</title>
+<meta name="description" content="Software Engineer specializing in Java/Spring Boot, React, and microservices." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="./assets/db-initials-monogram-letter.jpg">
+
+<style>
+:root {
+  --bg: #050608;
+  --bg-elev: #0a0d12;
+  --bg-card: #0d1117;
+  --panel: rgba(0, 255, 209, 0.03);
+  --line: rgba(0, 255, 209, 0.12);
+  --line-bright: rgba(0, 255, 209, 0.25);
+  --text: #d6e1ec;
+  --text-dim: #6a7785;
+  --text-faint: #3a4754;
+
+  --cyan: #00ffd1;
+  --magenta: #ff2e88;
+  --yellow: #ffe600;
+  --purple: #b388ff;
+
+  --display: 'Orbitron', sans-serif;
+  --body: 'Rajdhani', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+
+  --glow-cyan: 0 0 12px rgba(0, 255, 209, 0.5), 0 0 30px rgba(0, 255, 209, 0.25);
+  --glow-magenta: 0 0 12px rgba(255, 46, 136, 0.5), 0 0 30px rgba(255, 46, 136, 0.25);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background: repeating-linear-gradient(0deg, rgba(0, 255, 209, 0.015) 0 1px, transparent 1px 4px);
+  mix-blend-mode: screen;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  background:
+    radial-gradient(ellipse at top, rgba(0, 255, 209, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(255, 46, 136, 0.04) 0%, transparent 50%);
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out;
+  box-shadow: var(--glow-cyan);
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .cursor-dot { display: block; }
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(5, 6, 8, 0.7);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.nav-logo::before {
+  content: '';
+  width: 10px; height: 10px;
+  background: var(--cyan);
+  box-shadow: var(--glow-cyan);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+}
+.nav-logo span { color: var(--cyan); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: all 0.2s;
+  position: relative;
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.nav-links a .num { color: var(--text-faint); font-size: 0.7rem; }
+.nav-links a:hover, .nav-links a.active {
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+}
+.nav-links a.active .num, .nav-links a:hover .num { color: var(--cyan); }
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1.32rem; left: 0; right: 0;
+  height: 2px;
+  background: var(--cyan);
+  box-shadow: var(--glow-cyan);
+}
+@media (max-width: 720px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { gap: 1rem; font-size: 0.65rem; }
+  .nav-links a .num { display: none; }
+}
+
+.hero {
+  min-height: 100vh;
+  padding: 7rem 2.5rem 4rem;
+  position: relative;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 255, 209, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 209, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+.hero-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-deco span {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--cyan);
+  opacity: 0.15;
+  animation: float linear infinite;
+  white-space: nowrap;
+}
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-100px); }
+}
+
+.hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--cyan);
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--line-bright);
+  background: var(--panel);
+  letter-spacing: 0.1em;
+  opacity: 0;
+  animation: glitchIn 0.6s 0.2s ease-out forwards;
+}
+.hero-meta::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: var(--glow-cyan);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(2.75rem, 8.5vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero h1 .l {
+  display: block;
+  opacity: 0;
+  animation: glitchIn 0.7s ease-out forwards;
+}
+.hero h1 .l:nth-child(1) { animation-delay: 0.35s; }
+.hero h1 .l:nth-child(2) { animation-delay: 0.5s; }
+.hero h1 .l:nth-child(3) { animation-delay: 0.65s; }
+.hero h1 .neon {
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0, 255, 209, 0.4), 0 0 40px rgba(0, 255, 209, 0.2);
+}
+.hero h1 .neon::after {
+  content: '';
+  display: inline-block;
+  width: 4px; height: 0.85em;
+  background: var(--cyan);
+  margin-left: 0.15em;
+  vertical-align: -0.05em;
+  box-shadow: var(--glow-cyan);
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes glitchIn {
+  0% { opacity: 0; transform: translateY(20px); filter: blur(8px); }
+  60% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.hero-tagline {
+  font-family: var(--body);
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  color: var(--text-dim);
+  max-width: 42rem;
+  line-height: 1.55;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: glitchIn 0.8s 0.85s ease-out forwards;
+}
+.hero-tagline .hl { color: var(--cyan); }
+.hero-tagline .hl2 { color: var(--magenta); }
+
+.hero-cta {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: glitchIn 0.8s 1s ease-out forwards;
+}
+.btn {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 1rem 1.75rem;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.25s;
+  border: 1px solid var(--line-bright);
+  color: var(--cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--panel);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.btn:hover {
+  color: var(--bg);
+  background: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: var(--glow-cyan);
+}
+.btn.primary {
+  background: var(--cyan);
+  color: var(--bg);
+  box-shadow: var(--glow-cyan);
+}
+.btn.primary:hover { background: transparent; color: var(--cyan); }
+.btn .arrow { transition: transform 0.25s; }
+.btn:hover .arrow { transform: translate(2px, -2px); }
+
+.hero-stats {
+  position: absolute;
+  bottom: 3rem;
+  left: 2.5rem;
+  right: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0;
+  animation: glitchIn 1s 1.3s ease-out forwards;
+}
+.hero-stats span { display: flex; align-items: center; gap: 0.5rem; }
+.hero-stats span::before { content: '▸'; color: var(--cyan); }
+@media (max-width: 720px) {
+  .hero-stats { font-size: 0.6rem; flex-direction: column; gap: 0.5rem; bottom: 1.5rem; }
+}
+
+section { padding: 7rem 2.5rem; position: relative; }
+.container { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--magenta);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::before, .section-label::after {
+  content: '';
+  height: 1px;
+  background: var(--magenta);
+  box-shadow: 0 0 6px var(--magenta);
+}
+.section-label::before { width: 3rem; }
+.section-label::after { flex: 1; opacity: 0.3; }
+
+.section-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin-bottom: 3.5rem;
+}
+.section-title .neon { color: var(--cyan); text-shadow: 0 0 20px rgba(0, 255, 209, 0.3); }
+
+.about { border-top: 1px solid var(--line); }
+.about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 4rem; align-items: start; }
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+.about-text p { font-size: 1.15rem; line-height: 1.7; color: var(--text); margin-bottom: 1.25rem; }
+.about-text p:last-child { color: var(--text-dim); font-size: 1.05rem; }
+.about-text strong { color: var(--cyan); font-weight: 600; }
+.about-text em { font-style: normal; color: var(--magenta); }
+
+.terminal {
+  background: var(--bg-card);
+  border: 1px solid var(--line-bright);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+}
+.terminal-bar {
+  background: rgba(0, 255, 209, 0.06);
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.terminal-bar .dots { display: flex; gap: 0.35rem; margin-right: 0.5rem; }
+.terminal-bar .dots span { width: 8px; height: 8px; border-radius: 50%; }
+.terminal-bar .dots span:nth-child(1) { background: var(--magenta); }
+.terminal-bar .dots span:nth-child(2) { background: var(--yellow); }
+.terminal-bar .dots span:nth-child(3) { background: var(--cyan); }
+.terminal-body { padding: 1.5rem; }
+.terminal-line { display: flex; gap: 0.75rem; margin-bottom: 0.6rem; }
+.terminal-line .prompt { color: var(--cyan); }
+.terminal-line .key { color: var(--magenta); }
+.terminal-line .val { color: var(--text); }
+.terminal-line .com { color: var(--text-faint); }
+
+.stack {
+  background: var(--bg-elev);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+.stack-cell {
+  padding: 1.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  position: relative;
+  transition: all 0.3s;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+.stack-cell::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 24px; height: 1px;
+  background: var(--cyan);
+  box-shadow: var(--glow-cyan);
+}
+.stack-cell:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 255, 209, 0.1);
+}
+.stack-cell h3 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cyan);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.stack-cell h3 .id { color: var(--text-faint); font-size: 0.65rem; }
+.stack-cell ul { list-style: none; }
+.stack-cell li {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.stack-cell li:last-child { border-bottom: none; }
+.stack-cell li::before { content: '▸'; color: var(--cyan); font-size: 0.75rem; }
+
+.projects { border-top: 1px solid var(--line); }
+.project {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  padding: 5rem 0;
+  border-bottom: 1px dashed var(--line);
+  align-items: center;
+}
+.project:last-of-type { border-bottom: none; }
+.project:nth-child(even) .project-info { order: 2; }
+@media (max-width: 900px) {
+  .project { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 0; }
+  .project:nth-child(even) .project-info { order: 0; }
+}
+
+.project-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--magenta);
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.project-num::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--magenta);
+  box-shadow: 0 0 6px var(--magenta);
+}
+.project-title {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+.project-title .neon { color: var(--cyan); text-shadow: 0 0 15px rgba(0, 255, 209, 0.3); }
+.project-subtitle {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 1.75rem;
+}
+.project-desc { color: var(--text-dim); font-size: 1.05rem; line-height: 1.65; margin-bottom: 1.75rem; }
+.project-highlights { list-style: none; margin-bottom: 1.75rem; }
+.project-highlights li {
+  padding: 0.55rem 0 0.55rem 1.6rem;
+  position: relative;
+  color: var(--text);
+  font-size: 0.95rem;
+  border-bottom: 1px dashed var(--line);
+}
+.project-highlights li:last-child { border-bottom: none; }
+.project-highlights li::before {
+  content: '◢';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-size: 0.7rem;
+  top: 0.65rem;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--line-bright);
+  color: var(--cyan);
+  text-transform: lowercase;
+  background: var(--panel);
+}
+
+.project-visual {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-card);
+  border: 1px solid var(--line-bright);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+.project-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 255, 209, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 209, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.project-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.6) 100%);
+}
+.project-visual svg { position: relative; z-index: 1; width: 88%; height: 88%; }
+.project-visual .corner-tl, .project-visual .corner-tr,
+.project-visual .corner-bl, .project-visual .corner-br {
+  position: absolute;
+  width: 20px; height: 20px;
+  border-color: var(--cyan);
+  z-index: 2;
+}
+.project-visual .corner-tl { top: 8px; left: 8px; border-top: 2px solid; border-left: 2px solid; }
+.project-visual .corner-tr { top: 8px; right: 8px; border-top: 2px solid; border-right: 2px solid; }
+.project-visual .corner-bl { bottom: 8px; left: 8px; border-bottom: 2px solid; border-left: 2px solid; }
+.project-visual .corner-br { bottom: 8px; right: 8px; border-bottom: 2px solid; border-right: 2px solid; }
+
+.more {
+  background: var(--bg-elev);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.more-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.more-card {
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  transition: all 0.3s;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+}
+.more-card:hover {
+  border-color: var(--magenta);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(255, 46, 136, 0.1);
+}
+.more-card .tag-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--magenta);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.75rem;
+}
+.more-card h3 {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.more-card .meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--cyan);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.more-card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; }
+
+.recognition { border-top: 1px solid var(--line); }
+.recog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.recog-cell {
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  transition: all 0.3s;
+}
+.recog-cell:hover { border-color: var(--cyan); }
+.recog-cell .badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--cyan);
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.recog-cell h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.recog-cell p { color: var(--text-dim); font-size: 0.92rem; }
+
+.contact {
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 9rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 255, 209, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 209, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+}
+.contact .pre {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--magenta);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.contact h2 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(2.25rem, 6.5vw, 5rem);
+  line-height: 1.0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+}
+.contact h2 .neon { color: var(--cyan); text-shadow: 0 0 25px rgba(0, 255, 209, 0.4); }
+.contact-email {
+  font-family: var(--mono);
+  font-size: clamp(1.05rem, 2.5vw, 1.6rem);
+  color: var(--text);
+  text-decoration: none;
+  padding: 1.25rem 2rem;
+  border: 1px solid var(--cyan);
+  background: var(--panel);
+  display: inline-block;
+  transition: all 0.3s;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+.contact-email:hover {
+  color: var(--bg);
+  background: var(--cyan);
+  box-shadow: var(--glow-cyan);
+}
+.contact-links {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  flex-wrap: wrap;
+}
+.contact-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: all 0.2s;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid transparent;
+}
+.contact-links a:hover { color: var(--cyan); border-color: var(--cyan); }
+
+footer {
+  padding: 1.75rem 2.5rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+footer .status { display: flex; align-items: center; gap: 0.5rem; }
+footer .status::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: var(--glow-cyan);
+  animation: pulse 2s ease-in-out infinite;
+}
+@media (max-width: 600px) {
+  footer { flex-direction: column; gap: 0.5rem; align-items: center; }
+}
+
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+.reveal-children > * { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+.reveal-children.in > * { opacity: 1; transform: translateY(0); }
+.reveal-children.in > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-children.in > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-children.in > *:nth-child(3) { transition-delay: 0.19s; }
+.reveal-children.in > *:nth-child(4) { transition-delay: 0.26s; }
+.reveal-children.in > *:nth-child(5) { transition-delay: 0.33s; }
+.reveal-children.in > *:nth-child(6) { transition-delay: 0.4s; }
+.reveal-children.in > *:nth-child(7) { transition-delay: 0.47s; }
+.reveal-children.in > *:nth-child(8) { transition-delay: 0.54s; }
+
+.contact-links a,
+.contact-email {
+  position: relative;
+  z-index: 9999;
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursor"></div>
+
+<nav>
+  <div class="nav-logo">DB<span>_</span>SYS<span>//</span>0xE1</div>
+  <ul class="nav-links">
+    <li><a href="#about" data-section="about"><span class="num">01</span> About</a></li>
+    <li><a href="#stack" data-section="stack"><span class="num">02</span> Stack</a></li>
+    <li><a href="#work" data-section="work"><span class="num">03</span> Work</a></li>
+    <li><a href="#contact" data-section="contact"><span class="num">04</span> Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-deco" id="deco"></div>
+  <div class="hero-inner">
+    <div class="hero-meta">SYS::ONLINE · NAVI MUMBAI / IN</div>
+    <h1>
+      <span class="l">Software</span>
+      <span class="l">Engineer</span>
+      <span class="l neon">// Backend</span>
+    </h1>
+    <p class="hero-tagline">
+      I build <span class="hl">resilient backends</span> for the automotive industry —
+      designing APIs, breaking monoliths into <span class="hl2">microservices</span>,
+      and writing developer tooling that quietly makes everyone's day shorter.
+    </p>
+    <div class="hero-cta">
+      <a href="#work" class="btn primary">View Work <span class="arrow">↗</span></a>
+      <a href="#contact" class="btn">Initialize Contact</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <span>STATUS: AVAILABLE</span>
+    <span>DOMAIN: AUTOMOTIVE / DMS</span>
+    <span>STACK: JAVA · SPRING · REACT</span>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="container">
+    <div class="section-label">[ 01 ] About</div>
+    <h2 class="section-title reveal">Engineer <span class="neon">of systems</span><br>that move metal.</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a software engineer who builds the systems that car dealerships
+        actually run on — <strong>workshops, parts warehouses, sales, claims</strong>.</p>
+        <p>My day-to-day lives between Java backend services, Spring Cloud
+        microservices, and the occasional React frontend. I care about clean
+        APIs, <em>fault tolerance</em>, and tooling that removes friction
+        for the developers around me.</p>
+        <p>When something feels like it should be automated, I usually end up
+        automating it.</p>
+      </div>
+      <div class="terminal reveal">
+        <div class="terminal-bar">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span>~/divesh/profile.json</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line"><span class="prompt">$</span><span class="com">// active profile</span></div>
+          <div class="terminal-line"><span class="key">role</span><span class="val">: Software Developer</span></div>
+          <div class="terminal-line"><span class="key">org</span><span class="val">: Vivekanand Technologies</span></div>
+          <div class="terminal-line"><span class="key">domain</span><span class="val">: Automotive / DMS</span></div>
+          <div class="terminal-line"><span class="key">based</span><span class="val">: Navi Mumbai, IN</span></div>
+          <div class="terminal-line"><span class="key">focus</span><span class="val">: monolith → microservices</span></div>
+          <div class="terminal-line"><span class="key">edu</span><span class="val">: B.Sc. CS · CGPA 9.36</span></div>
+          <div class="terminal-line"><span class="prompt">$</span><span class="com">// status</span></div>
+          <div class="terminal-line"><span class="key">available</span><span class="val">: true</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack" class="stack">
+  <div class="container">
+    <div class="section-label">[ 02 ] Tech Stack</div>
+    <h2 class="section-title reveal">Tools I <span class="neon">reach for</span>.</h2>
+    <div class="stack-grid reveal-children">
+      <div class="stack-cell"><h3><span class="id">[01]</span> Languages</h3><ul><li>Java</li><li>JavaScript</li><li>C#</li></ul></div>
+      <div class="stack-cell"><h3><span class="id">[02]</span> Backend</h3><ul><li>Spring Boot</li><li>Spring Cloud</li><li>Spring JPA</li><li>Hibernate</li><li>.NET</li></ul></div>
+      <div class="stack-cell"><h3><span class="id">[03]</span> Microservices</h3><ul><li>Eureka</li><li>API Gateway</li><li>OpenFeign</li><li>Resilience4j</li></ul></div>
+      <div class="stack-cell"><h3><span class="id">[04]</span> Frontend</h3><ul><li>React.js</li><li>HTML / CSS</li></ul></div>
+      <div class="stack-cell"><h3><span class="id">[05]</span> Data &amp; APIs</h3><ul><li>MySQL</li><li>REST APIs</li><li>SOAP</li><li>OpenAPI / Swagger</li></ul></div>
+      <div class="stack-cell"><h3><span class="id">[06]</span> Build &amp; DevOps</h3><ul><li>Maven</li><li>Docker</li><li>Jenkins · CI/CD</li><li>Git</li></ul></div>
+      <div class="stack-cell"><h3><span class="id">[07]</span> Testing &amp; Tooling</h3><ul><li>JUnit</li><li>Postman</li><li>SoapUI</li></ul></div>
+      <div class="stack-cell"><h3><span class="id">[08]</span> Workflow</h3><ul><li>Agile · Scrum</li><li>JIRA · SourceTree</li><li>IntelliJ · VS Code</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="projects">
+  <div class="container">
+    <div class="section-label">[ 03 ] Selected Work</div>
+    <h2 class="section-title reveal">Projects I'm <span class="neon">proud of</span>.</h2>
+
+    <article class="project reveal">
+      <div class="project-info">
+        <div class="project-num">PROJECT // 01</div>
+        <h3 class="project-title">CarIT <span class="neon">Microservices</span><br>Migration</h3>
+        <div class="project-subtitle">Spring Boot · Spring Cloud · React</div>
+        <p class="project-desc">Took the legacy monolithic CarIT workshop module and broke it into independently deployable microservices — each owning a clean domain boundary and talking through a single API Gateway.</p>
+        <ul class="project-highlights">
+          <li>Four services: Customer, Vehicle, Planning, Order</li>
+          <li>Eureka for service discovery, OpenFeign for service-to-service calls</li>
+          <li>Resilience4j for fault tolerance &amp; graceful degradation</li>
+          <li>End-to-end: create customer → add vehicle → plan → order</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">spring-boot</span><span class="tag">spring-cloud</span>
+          <span class="tag">eureka</span><span class="tag">openfeign</span>
+          <span class="tag">resilience4j</span><span class="tag">react</span>
+        </div>
+      </div>
+      <div class="project-visual">
+        <span class="corner-tl"></span><span class="corner-tr"></span>
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 0, 8 4, 0 8" fill="#00ffd1"/>
+            </marker>
+            <filter id="glowCyan">
+              <feGaussianBlur stdDeviation="2" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <rect x="155" y="25" width="90" height="38" fill="rgba(0,255,209,0.08)" stroke="#00ffd1" stroke-width="1.5" filter="url(#glowCyan)"/>
+          <text x="200" y="49" text-anchor="middle" fill="#00ffd1" font-family="JetBrains Mono" font-size="10" font-weight="600">API GATEWAY</text>
+          <circle cx="345" cy="44" r="22" fill="rgba(255,46,136,0.05)" stroke="#ff2e88" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="345" y="48" text-anchor="middle" fill="#ff2e88" font-family="JetBrains Mono" font-size="9">EUREKA</text>
+          <line x1="245" y1="44" x2="323" y2="44" stroke="#ff2e88" stroke-width="0.8" stroke-dasharray="2 3"/>
+          <g font-family="JetBrains Mono" font-size="9" font-weight="500">
+            <rect x="20" y="135" width="80" height="42" fill="#0d1117" stroke="#00ffd1" stroke-width="1.2"/>
+            <text x="60" y="153" text-anchor="middle" fill="#00ffd1">CUSTOMER</text>
+            <text x="60" y="167" text-anchor="middle" fill="#6a7785" font-size="8">:8081</text>
+            <rect x="115" y="135" width="80" height="42" fill="#0d1117" stroke="#00ffd1" stroke-width="1.2"/>
+            <text x="155" y="153" text-anchor="middle" fill="#00ffd1">VEHICLE</text>
+            <text x="155" y="167" text-anchor="middle" fill="#6a7785" font-size="8">:8082</text>
+            <rect x="210" y="135" width="80" height="42" fill="#0d1117" stroke="#00ffd1" stroke-width="1.2"/>
+            <text x="250" y="153" text-anchor="middle" fill="#00ffd1">PLANNING</text>
+            <text x="250" y="167" text-anchor="middle" fill="#6a7785" font-size="8">:8083</text>
+            <rect x="305" y="135" width="80" height="42" fill="#0d1117" stroke="#00ffd1" stroke-width="1.2"/>
+            <text x="345" y="153" text-anchor="middle" fill="#00ffd1">ORDER</text>
+            <text x="345" y="167" text-anchor="middle" fill="#6a7785" font-size="8">:8084</text>
+          </g>
+          <line x1="200" y1="63" x2="60" y2="135" stroke="#00ffd1" stroke-width="1" marker-end="url(#arrCyan)" opacity="0.7"/>
+          <line x1="200" y1="63" x2="155" y2="135" stroke="#00ffd1" stroke-width="1" marker-end="url(#arrCyan)" opacity="0.7"/>
+          <line x1="200" y1="63" x2="250" y2="135" stroke="#00ffd1" stroke-width="1" marker-end="url(#arrCyan)" opacity="0.7"/>
+          <line x1="200" y1="63" x2="345" y2="135" stroke="#00ffd1" stroke-width="1" marker-end="url(#arrCyan)" opacity="0.7"/>
+          <g font-family="JetBrains Mono" font-size="8" fill="#6a7785">
+            <ellipse cx="60" cy="232" rx="22" ry="5" fill="none" stroke="#6a7785"/>
+            <path d="M 38 232 L 38 250 Q 38 256 60 256 Q 82 256 82 250 L 82 232" fill="none" stroke="#6a7785"/>
+            <ellipse cx="155" cy="232" rx="22" ry="5" fill="none" stroke="#6a7785"/>
+            <path d="M 133 232 L 133 250 Q 133 256 155 256 Q 177 256 177 250 L 177 232" fill="none" stroke="#6a7785"/>
+            <ellipse cx="250" cy="232" rx="22" ry="5" fill="none" stroke="#6a7785"/>
+            <path d="M 228 232 L 228 250 Q 228 256 250 256 Q 272 256 272 250 L 272 232" fill="none" stroke="#6a7785"/>
+            <ellipse cx="345" cy="232" rx="22" ry="5" fill="none" stroke="#6a7785"/>
+            <path d="M 323 232 L 323 250 Q 323 256 345 256 Q 367 256 367 250 L 367 232" fill="none" stroke="#6a7785"/>
+            <text x="60" y="278" text-anchor="middle">mysql</text>
+            <text x="155" y="278" text-anchor="middle">mysql</text>
+            <text x="250" y="278" text-anchor="middle">mysql</text>
+            <text x="345" y="278" text-anchor="middle">mysql</text>
+          </g>
+          <line x1="60" y1="177" x2="60" y2="227" stroke="#6a7785" stroke-width="0.8" stroke-dasharray="2 2"/>
+          <line x1="155" y1="177" x2="155" y2="227" stroke="#6a7785" stroke-width="0.8" stroke-dasharray="2 2"/>
+          <line x1="250" y1="177" x2="250" y2="227" stroke="#6a7785" stroke-width="0.8" stroke-dasharray="2 2"/>
+          <line x1="345" y1="177" x2="345" y2="227" stroke="#6a7785" stroke-width="0.8" stroke-dasharray="2 2"/>
+        </svg>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-info">
+        <div class="project-num">PROJECT // 02</div>
+        <h3 class="project-title">AutoScan <span class="neon">Warehouse</span><br>Integration</h3>
+        <div class="project-subtitle">Java · Spring Boot · REST · Handheld Scanners</div>
+        <p class="project-desc">Hooked CarIT into the AutoScan handheld scanner ecosystem so warehouse teams could stop pushing paper. Barcode/QR-driven workflows for everything from goods receiving to physical inventory counts.</p>
+        <ul class="project-highlights">
+          <li>Digital delivery receipts &amp; automated goods receiving</li>
+          <li>Order picking, packing, and shipment processing on handhelds</li>
+          <li>Real-time inventory sync between scanner and CarIT</li>
+          <li>Physical stock counting &amp; item location tracking</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">java</span><span class="tag">spring-boot</span>
+          <span class="tag">rest-apis</span><span class="tag">mysql</span>
+          <span class="tag">mobile-integration</span>
+        </div>
+      </div>
+      <div class="project-visual">
+        <span class="corner-tl"></span><span class="corner-tr"></span>
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrCyan2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 0, 8 4, 0 8" fill="#00ffd1"/>
+            </marker>
+            <marker id="arrMag2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 0, 8 4, 0 8" fill="#ff2e88"/>
+            </marker>
+          </defs>
+          <rect x="35" y="70" width="85" height="155" rx="8" fill="#0d1117" stroke="#00ffd1" stroke-width="1.5"/>
+          <rect x="42" y="78" width="71" height="8" rx="2" fill="#1a1f29"/>
+          <circle cx="113" cy="82" r="2" fill="#00ffd1"/>
+          <rect x="45" y="92" width="65" height="65" fill="rgba(0,255,209,0.06)" stroke="#00ffd1" stroke-width="0.5"/>
+          <g fill="#00ffd1">
+            <rect x="49" y="96" width="8" height="8"/><rect x="49" y="106" width="4" height="4"/><rect x="57" y="106" width="4" height="4"/><rect x="49" y="115" width="8" height="8"/>
+            <rect x="62" y="96" width="4" height="4"/><rect x="70" y="96" width="6" height="6"/><rect x="62" y="108" width="6" height="6"/><rect x="74" y="115" width="4" height="4"/>
+            <rect x="82" y="96" width="4" height="4"/><rect x="90" y="96" width="6" height="6"/><rect x="98" y="96" width="4" height="4"/>
+            <rect x="82" y="108" width="6" height="6"/><rect x="94" y="106" width="4" height="4"/><rect x="98" y="115" width="8" height="8"/>
+            <rect x="49" y="128" width="6" height="6"/><rect x="60" y="128" width="4" height="4"/><rect x="70" y="128" width="6" height="6"/><rect x="82" y="128" width="4" height="4"/><rect x="92" y="128" width="6" height="6"/>
+            <rect x="49" y="140" width="4" height="4"/><rect x="58" y="140" width="6" height="6"/><rect x="70" y="140" width="4" height="4"/><rect x="80" y="140" width="6" height="6"/><rect x="92" y="140" width="6" height="6"/>
+          </g>
+          <rect x="45" y="165" width="65" height="5" fill="#1a1f29"/>
+          <rect x="45" y="174" width="50" height="5" fill="#1a1f29"/>
+          <rect x="45" y="183" width="55" height="5" fill="#1a1f29"/>
+          <circle cx="77" cy="210" r="6" fill="none" stroke="#6a7785" stroke-width="1"/>
+          <text x="77" y="245" text-anchor="middle" fill="#6a7785" font-family="JetBrains Mono" font-size="9">SCANNER</text>
+
+          <path d="M 125 130 Q 175 125 235 125" fill="none" stroke="#00ffd1" stroke-width="1.5" marker-end="url(#arrCyan2)"/>
+          <text x="180" y="118" text-anchor="middle" fill="#00ffd1" font-family="JetBrains Mono" font-size="9" font-weight="600">POST /scan</text>
+          <path d="M 235 170 Q 175 175 125 170" fill="none" stroke="#ff2e88" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arrMag2)"/>
+          <text x="180" y="190" text-anchor="middle" fill="#ff2e88" font-family="JetBrains Mono" font-size="9">200 OK</text>
+
+          <rect x="240" y="80" width="130" height="70" fill="rgba(0,255,209,0.06)" stroke="#00ffd1" stroke-width="1.2"/>
+          <text x="305" y="105" text-anchor="middle" fill="#00ffd1" font-family="JetBrains Mono" font-size="10" font-weight="700">CarIT API</text>
+          <line x1="252" y1="115" x2="358" y2="115" stroke="#00ffd1" stroke-width="0.5" opacity="0.5"/>
+          <text x="305" y="132" text-anchor="middle" fill="#6a7785" font-family="JetBrains Mono" font-size="8">Spring Boot</text>
+          <text x="305" y="144" text-anchor="middle" fill="#6a7785" font-family="JetBrains Mono" font-size="8">/inventory · /orders</text>
+
+          <ellipse cx="305" cy="200" rx="42" ry="8" fill="none" stroke="#6a7785" stroke-width="1"/>
+          <path d="M 263 200 L 263 230 Q 263 240 305 240 Q 347 240 347 230 L 347 200" fill="none" stroke="#6a7785" stroke-width="1"/>
+          <ellipse cx="305" cy="230" rx="42" ry="8" fill="none" stroke="#6a7785" stroke-width="1" opacity="0.4"/>
+          <text x="305" y="262" text-anchor="middle" fill="#6a7785" font-family="JetBrains Mono" font-size="8">inventory.db</text>
+          <line x1="305" y1="150" x2="305" y2="192" stroke="#6a7785" stroke-width="0.8" stroke-dasharray="2 2"/>
+        </svg>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-info">
+        <div class="project-num">PROJECT // 03</div>
+        <h3 class="project-title">BuildAPIdocs <span class="neon">// 155 APIs</span><br>zero manual writing</h3>
+        <div class="project-subtitle">OpenAPI Generator · YAML · Mustache</div>
+        <p class="project-desc">An internal program that generates and publishes documentation for every API in CarIT — straight from the source code. Developers write comments next to their methods; the docs stay in sync forever.</p>
+        <ul class="project-highlights">
+          <li>OpenAPI Generator with custom YAML definitions</li>
+          <li>Method-level docs pulled from in-code comments</li>
+          <li>Custom Mustache templates for company branding</li>
+          <li>Result: 155 APIs documented end-to-end, zero manual writing</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">java</span><span class="tag">openapi</span>
+          <span class="tag">yaml</span><span class="tag">mustache</span>
+          <span class="tag">developer-tooling</span>
+        </div>
+      </div>
+      <div class="project-visual">
+        <span class="corner-tl"></span><span class="corner-tr"></span>
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrCyan3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 0, 8 4, 0 8" fill="#00ffd1"/>
+            </marker>
+          </defs>
+          <rect x="20" y="115" width="95" height="70" fill="#0d1117" stroke="#00ffd1" stroke-width="1.2"/>
+          <text x="67" y="138" text-anchor="middle" fill="#00ffd1" font-family="JetBrains Mono" font-size="10" font-weight="600">.java</text>
+          <line x1="30" y1="148" x2="105" y2="148" stroke="#00ffd1" stroke-width="0.5" opacity="0.4"/>
+          <text x="67" y="163" text-anchor="middle" fill="#6a7785" font-family="JetBrains Mono" font-size="8">/* docs */</text>
+          <text x="67" y="175" text-anchor="middle" fill="#6a7785" font-family="JetBrains Mono" font-size="8">@param ...</text>
+
+          <line x1="115" y1="150" x2="150" y2="150" stroke="#00ffd1" stroke-width="1.5" marker-end="url(#arrCyan3)"/>
+
+          <rect x="155" y="90" width="110" height="120" fill="rgba(0,255,209,0.08)" stroke="#00ffd1" stroke-width="1.8"/>
+          <rect x="155" y="90" width="110" height="22" fill="rgba(0,255,209,0.15)"/>
+          <text x="210" y="106" text-anchor="middle" fill="#00ffd1" font-family="Orbitron" font-size="11" font-weight="700">BuildAPIdocs</text>
+          <text x="210" y="135" text-anchor="middle" fill="#d6e1ec" font-family="JetBrains Mono" font-size="9">OpenAPI Gen</text>
+          <text x="210" y="152" text-anchor="middle" fill="#d6e1ec" font-family="JetBrains Mono" font-size="9">+ Mustache</text>
+          <text x="210" y="170" text-anchor="middle" fill="#ff2e88" font-family="JetBrains Mono" font-size="8">[YAML config]</text>
+          <text x="210" y="195" text-anchor="middle" fill="#6a7785" font-family="JetBrains Mono" font-size="8">$ build →</text>
+
+          <line x1="265" y1="150" x2="300" y2="150" stroke="#00ffd1" stroke-width="1.5" marker-end="url(#arrCyan3)"/>
+
+          <rect x="305" y="115" width="80" height="70" fill="#0d1117" stroke="#00ffd1" stroke-width="1.2"/>
+          <text x="345" y="138" text-anchor="middle" fill="#00ffd1" font-family="JetBrains Mono" font-size="10" font-weight="600">/docs</text>
+          <line x1="315" y1="148" x2="375" y2="148" stroke="#00ffd1" stroke-width="0.5" opacity="0.4"/>
+          <text x="345" y="165" text-anchor="middle" fill="#ff2e88" font-family="Orbitron" font-size="12" font-weight="700">155</text>
+          <text x="345" y="178" text-anchor="middle" fill="#6a7785" font-family="JetBrains Mono" font-size="8">APIs</text>
+
+          <text x="200" y="245" text-anchor="middle" fill="#6a7785" font-family="JetBrains Mono" font-size="9">// docs that stay in sync. always.</text>
+          <line x1="50" y1="260" x2="350" y2="260" stroke="#00ffd1" stroke-width="0.5" opacity="0.2"/>
+        </svg>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="more">
+  <div class="container">
+    <div class="section-label">[ 04 ] Archive</div>
+    <h2 class="section-title reveal">More <span class="neon">work</span>.</h2>
+    <div class="more-grid reveal-children">
+      <div class="more-card">
+        <div class="tag-num">// 01</div>
+        <h3>CarIT DMS · Legacy</h3>
+        <div class="meta">Java · Servlets · Spring · MySQL</div>
+        <p>Maintained and extended the original Java/Servlets DMS — workshops, parts warehouses, sales modules, third-party API integrations across dealership functions.</p>
+      </div>
+      <div class="more-card">
+        <div class="tag-num">// 02</div>
+        <h3>Star Client</h3>
+        <div class="meta">C# · .NET · Outlook</div>
+        <p>SMTP email services, browser navigation hooks, and an Outlook sync that kept the CarIT planning calendar in line with users' personal calendars.</p>
+      </div>
+      <div class="more-card">
+        <div class="tag-num">// 03</div>
+        <h3>JLR Claims</h3>
+        <div class="meta">Team Lead · 3 Developers</div>
+        <p>Led a small team delivering features for the JLR Claims module — on-time delivery, positive stakeholder feedback, and a smooth release cycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recognition">
+  <div class="container">
+    <div class="section-label">[ 05 ] Recognition</div>
+    <h2 class="section-title reveal"><span class="neon">Highlights</span>.</h2>
+    <div class="recog-grid reveal-children">
+      <div class="recog-cell">
+        <div class="badge">★ AWARD</div>
+        <h3>Employee of the Year</h3>
+        <p>2023–2024 · Vivekanand Technologies, for consistent contributions across CarIT projects.</p>
+      </div>
+      <div class="recog-cell">
+        <div class="badge">▣ CERT</div>
+        <h3>Spring Boot · Essential Skills</h3>
+        <p>Scaler · June 2025</p>
+      </div>
+      <div class="recog-cell">
+        <div class="badge">◐ EDU</div>
+        <h3>CGPA 9.36 / 10</h3>
+        <p>B.Sc. Computer Science · Mumbai University · 2016–2019</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="pre">[ 06 ] // Initialize Contact</div>
+  <h2>Got a <span class="neon">problem</span><br>worth solving?</h2>
+  <a href="mailto:diveshbari1010@gmail.com" class="contact-email">diveshbari1010@gmail.com</a>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/divesh-bari/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="tel:+918830675037">+91 88306 75037</a>
+  </div>
+</section>
+
+<footer>
+  <div>© <span id="year"></span> · DIVESH BARI · ALL SYSTEMS NOMINAL</div>
+  <div class="status">SYS_STATUS // ONLINE</div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+if (cursor && window.matchMedia('(hover: hover)').matches) {
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+  });
+  document.querySelectorAll('a, button, .stack-cell, .more-card, .recog-cell, .project-visual').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.style.transform += ' scale(2.5)');
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = cursor.style.transform.replace(' scale(2.5)', '');
+    });
+  });
+}
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .reveal-children').forEach(el => io.observe(el));
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+function updateNav() {
+  const scrollY = window.pageYOffset;
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 120;
+    const height = sec.offsetHeight;
+    const id = sec.getAttribute('id');
+    if (scrollY >= top && scrollY < top + height) {
+      navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+    }
+  });
+}
+window.addEventListener('scroll', updateNav);
+updateNav();
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const deco = document.getElementById('deco');
+if (deco) {
+  const fragments = [
+    '0x1F4A', 'GET /api/v1', '404', 'POST /scan', '{ ok: true }', 'spring.cloud',
+    'eureka.client', '@RestController', 'try { }', 'await fetch()', '0x00FFD1',
+    'mysql://', 'docker run', 'jenkins.build', 'main()', 'public class',
+    'OpenAPI', 'Resilience4j', '0x88', 'JWT.verify'
+  ];
+  for (let i = 0; i < 14; i++) {
+    const s = document.createElement('span');
+    s.textContent = fragments[i % fragments.length];
+    s.style.left = (Math.random() * 100) + '%';
+    s.style.animationDuration = (15 + Math.random() * 20) + 's';
+    s.style.animationDelay = -(Math.random() * 20) + 's';
+    s.style.fontSize = (10 + Math.random() * 6) + 'px';
+    deco.appendChild(s);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     content="width=device-width, initial-scale=1.0">
+        <title>Divesh Bari | Portfolio</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="./Files/pictures/database_logo.jpg" />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a href="#" class="logo">Divesh<span>Bari</span></a>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#github" class="nav-link">GitHub</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text fade-in-up delay-2">
+                        <h1 class="hero-title">Hi, I'm <span style="color: var(--primary);">Divesh Bari</span></h1>
+                        <p class="hero-subtitle">Software Developer | Problem Solver</p>
+                        <p>A passionate Software Developer with a knack for solving real-world problems through clean, efficient code. Take a look at my work and get in touch!</p>
+                        <div>
+                            <a href="#contact" class="btn">Get In Touch</a>
+                            <a href="#projects" class="btn">View Work</a>
+                            <a href="./Files/DiveshBariResume.docx" download class="btn">Download CV</a>
+                        </div>
+                        <div class="social-icons">
+                            <a href="https://github.com/DiveshBari" class="social-icon"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/divesh-bari/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <!-- <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a> -->
+                            <a href="mailto:diveshbari1010@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="hero-image zoom-in-up delay-2">
+                        <img src="./Files/pictures/DiveshBari.jpg" alt="Divesh Bari" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="./Files/pictures/carit.jpg" alt="CarITDMS" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">CarIT - Dealership Management System</h3>
+                            <p>A robust Java-based desktop application designed for enterprise-level vehicle inventory, service tracking, parts ordering, and customer management. Includes SDI/MDI interface and multi-monitor support.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Java</span>
+                                <span class="project-tag">Spring</span>
+                                <span class="project-tag">SQL</span>
+                                <span class="project-tag">Swing</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card for future projects
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/200" alt="SIP Calculator" class="project-img">
+                        <div class="project-content">
+                            <h3 class="project-title">SIP Calculator</h3>
+                            <p>A simple and efficient SIP (Systematic Investment Plan) Calculator built using **Spring Boot** for the backend and **React** for the frontend. This application helps users calculate their SIP investment details and returns over a specific duration with customizable parameters like amount, interest rate, and investment period.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Spring Boot</span>
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section class="certifications" id="certifications">
+            <div class="container">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certifications-grid">
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3 class="certification-title">Certificate of Excellence - Spring Boot Course: Certified Course for Essential Skills</h3>
+                            <p>Pivotal</p>
+                            <p class="certification-date">Issued: July 2025</p>
+                            <!-- <a href="#" class="certification-link">View Credential</a> -->
+                        </div>
+                    </div>
+                    <!-- Add more certifications as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Section -->
+        <section class="github" id="github">
+            <div class="container">
+                <h2 class="section-title">GitHub Contributions</h2>
+                <div class="github-stats">
+                    <img src="https://github-readme-stats.vercel.app/api?username=DiveshBari&show_icons=true&theme=default" />
+                </div>
+                <div class="github-stats">
+                    <img src="https://ghchart.rshah.org/DiveshBari" alt="Divesh's Github chart" />
+                </div>
+            </div>              
+        </section>
+
+        2025 Divesh Bari. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
